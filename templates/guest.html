@@ -1,0 +1,135 @@
+{% extends 'layout.html' %} {% block body %} {% if session['admin'] is defined
+%}
+
+<style>
+  body {
+    background-image: url("../static/images/yay.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+</style>
+
+<h3 class="title-main">
+  MyLib <span class="second">Decision Support System</span>
+</h3>
+{% else %} {% endif %}
+
+<h4 class="subtitle">Please provide the books criteria on the form below</h4>
+
+<form class="form-container" action="/save" method="post">
+  <div class="form-group row justify-content-center">
+    <label for="seller" class="col-sm-2 col-form-label">Store Name</label>
+    <div class="col-sm-6">
+      <input
+        type="text"
+        class="form-control"
+        id="seller"
+        name="seller"
+        required
+      />
+    </div>
+  </div>
+  <div class="form-group row justify-content-center">
+    <label for="prices" class="col-sm-2 col-form-label">Book Prices (Rp)</label>
+    <div class="col-sm-6">
+      <input
+        type="number"
+        class="form-control"
+        id="prices"
+        name="prices"
+        step=".01"
+        required
+      />
+    </div>
+  </div>
+  <div class="form-group row justify-content-center">
+    <label for="condition" class="col-sm-2 col-form-label"
+      >Book Condition</label
+    >
+    <div class="col-sm-6">
+      <select id="condition" name="condition" class="form-control" required>
+        <option value="">Choose..</option>
+        <option value="5">New</option>
+        <option value="4">Like New (very minimal signs of use)</option>
+        <option value="3">Good (noticeable signs of use)</option>
+        <option value="2">Fair (clear signs of wear and use)</option>
+        <option value="1">
+          Acceptable (extensive signs of use but still readable)
+        </option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group row justify-content-center">
+    <label for="rating" class="col-sm-2 col-form-label">Store Rating</label>
+    <div class="col-sm-6">
+      <input
+        type="number"
+        class="form-control"
+        id="rating"
+        name="rating"
+        placeholder="0-100%"
+        min="1"
+        max="100"
+        required
+      />
+    </div>
+  </div>
+
+  <div class="center-col">
+    <a class="button-start back" href="/"> Back </a>
+    <button type="submit" class="button-start admin">Add Book</button>
+    {% if unlock %}
+    <a class="button-start admin" href="/process"> Proceed Rank </a>
+    {% else %}
+    <a class="button-start disabled" disabled> Proceed Rank </a>
+    {% endif %}
+  </div>
+</form>
+
+{% if condition %}
+<h4 class="subtitle2">Books Data</h4>
+
+<div class="row">
+  {% for item in data %}
+  <div class="col-sm-4 bot">
+    {% if data[loop.index0].rating|int == 100 %} {% set many = 5 %} {% elif
+    data[loop.index0].rating|int >= 75 %} {% set many = 4 %} {% elif
+    data[loop.index0].rating|int >= 55 %} {% set many = 3 %} {% elif
+    data[loop.index0].rating|int >= 25 %} {% set many = 2 %} {% else %} {% set
+    many = 1 %} {% endif %}
+    <div class="card">
+      <div class="card-body">
+        {% if loop.index % 2 == 0 %}
+        <h5 class="card-title" style="color: #104a63; margin-bottom: 3px">
+          {{data[loop.index0].seller}} <br />{% for i in range(many) %}
+          <span><i class="fas fa-star"></i></span> {% endfor %}
+        </h5>
+        {% else %}
+        <h5 class="card-title" style="color: #1e6310; margin-bottom: 3px">
+          {{data[loop.index0].seller}} <br />{% for i in range(many) %}
+          <span><i class="fas fa-star"></i></span> {% endfor %}
+        </h5>
+        {% endif %}
+        <div class="row">
+          <div class="col">
+            {% if data[loop.index0].condition|int == 5 %} {% set bc = 'New' %}
+            {% elif data[loop.index0].condition|int == 4 %} {% set bc = 'Used -
+            Like New' %} {% elif data[loop.index0].condition|int == 3 %} {% set
+            bc = 'Used - Very Good' %} {% elif data[loop.index0].condition|int
+            == 2 %} {% set bc = 'Used - Good' %} {% else %} {% set bc = 'Used -
+            Acceptable' %} {% endif %}
+            <p class="card-text">How: {{bc}}</p>
+          </div>
+          <div class="col-sm-4 left-col">
+            <p class="card-text">Price: {{data[loop.index0].prices}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% if loop.index % 3 == 0 %}
+  </div>
+  <div class="row">{% endif %}</div>
+  {% endfor %}
+</div>
+
+{% endif %} {% endblock %}

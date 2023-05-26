@@ -1,0 +1,30 @@
+{% extends 'layout.html' %} {% block body %}
+
+<style>
+  body {
+    background-image: url('../static/images/yay.jpg');
+    background-repeat:no-repeat;
+    background-size: cover;
+  }
+</style>
+
+<h1 class="title-main">MooraLib DSS</h1>
+<h2 class="title-main">Choose your best book with our Decision Support System!</h2>
+
+<div class="main-body"></div>
+  <div class="text-center">
+    <button
+      type="button"
+      class="button-start home"
+      onclick="window.location.href='/admin'"
+    >
+      START
+    </button>
+  </div>
+
+  <h4 class="title-main">
+    by Team Vira Bes
+  </h4>
+</div>
+
+{% endblock %}

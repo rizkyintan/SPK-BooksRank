@@ -1,0 +1,212 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap");
+
+.main-body {
+  padding-top: 20px;
+}
+
+.top100 {
+  margin-top: 100px;
+}
+
+h1.title-main,
+h2.title-main,
+h3.title-main,
+h4.title-main {
+  text-align: center;
+  /* letter-spacing: 10px; */
+  margin-bottom: 20px;
+  padding-top: 130px;
+  padding-bottom: 10px;
+  font-size: 100px;
+  font-family: "Poppins";
+  color: #41566b;
+}
+
+h2.title-main {
+  padding-top: 15px;
+  font-size: 20px;
+  color: black;
+}
+
+h3.title-main {
+  padding-top: 70px;
+  font-size: 30px;
+}
+
+h4.title-main {
+  font-size: 15px;
+  padding-top: 250px;
+  color: #7e7e7e;
+}
+
+h4.subtitle {
+  text-align: center;
+  font-size: 15px;
+  font-family: "Poppins";
+  color: #7e7e7e;
+}
+
+h4.subtitle2 {
+  text-align: center;
+  font-size: 25px;
+  font-family: "Poppins";
+  margin: 30px;
+}
+
+h4.help-text {
+  padding-top: 10px;
+  /* letter-spacing: 2px; */
+  font-size: 15px;
+  font-family: "Poppins";
+}
+
+h5.card-title {
+  margin-bottom: 6px;
+  /* letter-spacing: 7px; */
+  font-size: 15px;
+  font-family: "Poppins";
+  color: #104a63;
+}
+
+.fa-star {
+  /* letter-spacing: 2px; */
+  font-size: 10px;
+  color: #f3de3d;
+}
+
+p.card-text {
+  font-size: 12px;
+  font-family: "Poppins";
+}
+
+.card-body {
+  padding: 10px 15px;
+}
+
+span.second {
+  color: #4733ba;
+}
+
+.left-col {
+  text-align: right;
+  padding-right: 0px;
+}
+
+.left-col p {
+  text-align: right;
+  padding-right: 15px;
+}
+
+.center-col {
+  text-align: center;
+  padding: 0px 0px;
+}
+
+.right-col {
+  padding-left: 0px;
+}
+
+.button-start {
+  cursor: pointer;
+  margin-top: 10px;
+  padding: 5.2px 25px;
+  letter-spacing: 2px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #fff;
+  background-color: #c35f54;
+  border: none;
+  border-radius: 50px;
+  box-shadow: 0 4px #e4b49d;
+}
+
+.button-start.home {
+  padding: 10px 40px;
+}
+
+.button-start:hover {
+  background-color: #924747;
+}
+
+.button-start.admin {
+  margin-right: 10px;
+  color: black;
+  background-color: #ffe992;
+  box-shadow: 0 4px #ffc26d;
+}
+
+.button-start.admin:active {
+  background-color: rgb(196, 170, 124);
+  transform: translateY(2px);
+}
+
+.button-start.disabled {
+  cursor: not-allowed;
+  background-color: #585858;
+  box-shadow: 0 4px #393939;
+}
+
+.button-start.back {
+  margin-right: 10px;
+  background-color: #bb2323;
+  box-shadow: 0 4px #992f2f;
+}
+
+.button-start:active {
+  background-color: #992f2f;
+  /* box-shadow: 0 3px #4b943c; */
+  transform: translateY(2px);
+}
+
+.button-start.disabled:active {
+  background-color: #585858;
+  box-shadow: 0 4px #393939;
+  transform: none;
+}
+
+.button-start.back:active {
+  transform: translateY(2px);
+}
+
+.button-start.back:hover {
+  background-color: #3a0808;
+}
+
+button.active.focus,
+button.active:focus,
+button.focus,
+button.focus:active,
+button:active:focus,
+button:focus {
+  outline: 0 !important;
+  outline-offset: 0 !important;
+}
+
+a.button-start {
+  appearance: button;
+  -moz-appearance: button;
+  -webkit-appearance: button;
+  text-decoration: none;
+}
+
+a:hover {
+  color: white;
+}
+
+.form-container {
+  padding: 15px 150px;
+}
+
+.table {
+  margin-top: 20px;
+  margin-bottom: 70px;
+  font-weight: 500;
+}
+
+.bot {
+  margin-bottom: 15px;
+}
+
+img {
+  width: 200px;
+}

@@ -1,0 +1,122 @@
+{% extends 'layout.html' %} {% block body %}
+
+<style>
+  body {
+    background-image: url("../static/images/yay.jpg");
+    background-attachment: fixed;
+    background-size: contain;
+    background-repeat: none;
+  }
+</style>
+
+<h3 class="title-main">Books Rank <span class="second">Result</span></h3>
+<h4 class="subtitle">
+  Here are the result of your data books using Moora Method
+</h4>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Seller Name</th>
+      <th scope="col">Rank</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in session['result'] %}
+    <tr>
+      <td>{{ item }}</td>
+      <td>{{ loop.index }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<div class="center-col top100">
+  <a class="button-start back" href="/"> Back to Home </a>
+</div>
+
+{% if session['admin'] is defined %}
+<h3 class="title-main">MOORA PROCESS</h3>
+<h4 class="subtitle" style="color: #2089b6">NORMALIZATION</h4>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Price</th>
+      <th scope="col">Condition</th>
+      <th scope="col">Rating</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in session['normalization'] %}
+    <tr>
+      <td>{{ item[0] }}</td>
+      <td>{{ item[1] }}</td>
+      <td>{{ item[2] }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<h4 class="subtitle" style="color: #2089b6">NORMALIZATION MOORA</h4>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Price</th>
+      <th scope="col">Condition</th>
+      <th scope="col">Rating</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in session['normalizationMoora'] %}
+    <tr>
+      <td>{{ item[0] }}</td>
+      <td>{{ item[1] }}</td>
+      <td>{{ item[2] }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<h4 class="subtitle" style="color: #2089b6">OPTIMATION YI</h4>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Seller</th>
+      <th scope="col">Yi</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item, item2 in session['optimationYi'] %}
+    <tr>
+      <td>{{ item }}</td>
+      <td>{{ item2 }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<h4 class="subtitle" style="color: #2089b6">RANKING</h4>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scop="col">Rank</th>
+      <th scope="col">Seller</th>
+      <th scope="col">Yi</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item, item2 in session['rankingScore'] %}
+    <tr>
+      <td>{{loop.index}}</td>
+      <td>{{ item }}</td>
+      <td>{{ item2 }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endif %} {% endblock %}
