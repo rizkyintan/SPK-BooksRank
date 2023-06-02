@@ -1,11 +1,28 @@
 import math
+import mysql.connector
 
 class Moora(object):
-    alternatif = None
-    kriteria = ["Harga", "Kondisi", "Rating"]
-    tipe = ["cost", "benefit", "benefit"]
+    conn = mysql.connector.connect(
+        host="localhost",
+        database="mooralib",
+        user="root",
+        password="monopoki")
+
+    cur = conn.cursor()
+    cur = conn.cursor( buffered=True , dictionary=True)
+    cur.execute("SELECT * FROM moo_kriteria")
+    kriteria = []
+    tipe = []
+    bobot = []
+    for row in cur:
+        kriteria.append(row["kriteria"])
+        r = row['type']
+        r = "".join(r)
+        tipe.append(r)
+        bobot.append(row['bobot'])
+        
+    alternatif = None    
     jarak = [20, 10]
-    bobot = [5, 3, 3]
     alternatifKriteria = None
 
     def setData(self, seller, criteria):
